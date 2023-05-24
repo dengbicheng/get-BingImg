@@ -66,6 +66,7 @@ ITEM_PIPELINES = {
 #    'biying.pipelines.BiyingPipeline': 300,
     #'biying.pipelines.DownloadPipeline': 300
     # 'biying.pipelines.PhotoPipeline': 300
+    "biying.pipelines.MysqlPipeline":300 # 保存到数据库
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -134,5 +135,5 @@ DB_HOST = 'localhost' #主机名  本地主机
 DB_PORT = 3306  #端口号
 DB_USER = 'root' #用户名
 DB_PASSWORD = '123456789'#密码
-DB_NAME = 'pacho' #数据库名
+DB_NAME = 'reptile' #数据库名
 DB_CHARSET = 'utf8'#编码

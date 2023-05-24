@@ -12,18 +12,18 @@ class BySpider(scrapy.Spider):
 
         for li in url:
             img_link = li.xpath('./div/div[@class="options"]/a[@class="ctrl download"]/@href').get()
-            name = str(li.xpath('./div/div[@class="description"]/h3/text()').get())[1:6]#text()获取文本内容
+            name = str(li.xpath('./div/div[@class="description"]/h3/text()').get()).split("(")[0].strip().replace('，', '_') # text()获取文本内容
             up_time = li.xpath('./div/div[@class="description"]/p[@class="calendar"]/em/text()').get()
             downloads = li.xpath('./div/div[@class="description"]/p[@class="view"]/em/text()').get()
-            print(img_link)
-            print(name)
-            print(up_time)
-            print(downloads)
+            print(img_link)#图片地址链接
+            print(name)#图片名字
+            print(up_time)#图片的上传时间
+            print(downloads)# 观看次数
 
             bookitem = BiyingItem(img_link=img_link,name=name,up_time=up_time,downloads=downloads)
             # 将bookitem对象传给管道
             yield bookitem
-        if self.b <= 131:
+        if self.b <= 142:
             self.b = self.b + 1
             url = self.base_url + str(self.b)
             print('正在爬取：',url)
